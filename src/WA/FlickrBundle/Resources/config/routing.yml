@@ -1,0 +1,40 @@
+wa_flickr_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: WAFlickrBundle:Default:index }
+#mon hello world à moi:
+wa_flickr_helloword:
+    path:     /hello-world/{name}/{age}
+    defaults: { _controller: WAFlickrBundle:Hello:index,name:Bryan,age:25 }
+    requirements:
+        name: ^([A-z]+)$
+        age: \d+
+wa_flickr_contact_index:
+    path:     /contact
+    defaults: { _controller: WAFlickrBundle:Contact:index }
+    requirements:
+        _method: GET
+wa_flickr_contact_save:
+    path:     /contact
+    defaults: { _controller: WAFlickrBundle:Contact:save }
+    requirements:
+        _method: POST
+wa_flickr_search_index:
+    path:     /search
+    defaults: { _controller: WAFlickrBundle:Search:index }
+    requirements:
+        _method: GET
+wa_flickr_search_save:
+    path:     /search
+    defaults: { _controller: WAFlickrBundle:Search:findOut }
+    requirements:
+        _method: POST
+wa_flickr_search_imageDesc:
+    path:     /search/{id}/{secret}
+    defaults: { _controller: WAFlickrBundle:Search:getImageDesc }
+    requirements:
+        _method: GET
+wa_flickr_search_addToFavorite:
+    path:     /search/addToFavorite/{id}/{secret}
+    defaults: { _controller: WAFlickrBundle:Search:addToFavorite }
+    requirements:
+        _method: GET

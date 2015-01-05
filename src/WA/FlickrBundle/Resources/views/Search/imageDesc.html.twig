@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <link rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+    <title></title>
+    <style type="text/css">
+        ul{
+            width:80%;
+        }
+        li{
+            list-style-type: none;
+            display:inline-block;
+
+        }
+        img{
+            background: black;
+        }
+    </style>
+</head>
+<body>
+<header class="container">
+    <h1>get images from flickr</h1>
+</header>
+<div class="main container jumbotron">
+
+
+
+{#form(mySearchForm)#}
+  <div>
+      {% if photo is defined %}
+            {% if photo is empty %}
+                 <p>no photo desc</p>
+            {% else %}
+                <img class="img-rounded" src="{{photo.url}}"/>
+                <p>Description</p>
+                    {{ photo.description}}
+                </p>
+            <a href="{{ path('wa_flickr_search_index') }}">retour</a>
+            {% endif %}
+      {% endif %}
+  </div>
+</div>
+<footer>
+    {#comment with twig#}
+</footer>
+<script src="/vendor/js/jquery-2.1.1.min.js"></script>
+<script src="/vendor/js/bootstrap.min.js"></script>
+</body>

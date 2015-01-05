@@ -1,0 +1,11 @@
+wa_blog_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: WABlogBundle:Default:index }
+wa_blog_main:
+    path:     /main/{page}
+    defaults: { _controller: WABlogBundle:Main:index }
+wa_blog_article:
+    path:     article/{id}
+    defaults: { _controller: WABlogBundle:Article:index }
+    requirements:
+            id: \d+

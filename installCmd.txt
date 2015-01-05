@@ -1,0 +1,9 @@
+# installer composer :
+
+curl -sS https://getcomposer.org/installer | php
+
+# https://packagist.org/
+
+#install symfony : php ~/composer.phar create-project symfony/framework-standard-edition symfony
+
+app/console generate:bundle

@@ -1,0 +1,29 @@
+{% extends "WABlogBundle:Article:index.html.twig" %}
+{# le nom du bundle, le nom du repertoire#}
+{# sans repertoire WABlogBundle::index.html.twig #}
+{# sans repertoire,partagé par les bundles ::index.html.twig, à mettre dans app/ressouce #}
+
+{% block title %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="col-sm-11 col-sm-offset-1">
+    <article>
+    <h1>Article {{id }} </h1>
+    <blockquote>
+        <p class="text-justify text-lowercase text-success">
+            Le gouvernement a froncé les sourcils, lundi 15 décembre, en faisant savoir qu’UberPop, le service de transports entre particuliers serait interdit dès le 1er janvier 2015. Mais en pratique, rien ne se passera et la société Uber pourra continuer à se développer en France, conformément à sa tactique du rouleau compresseur. Explications.
+            Une loi, oui, mais encore faudra-t-il l’appliquer
+            Le 1er janvier, l’arsenal législatif et réglementaire qui met UberPop hors-la-loi sera complet. La loi sera applicable dans sa totalité. Restera, toutefois, à la faire appliquer.
+            Un tribunal pénal pourra interdire ce service. Encore faudra-t-il que quelqu’un le saisisse (un concurrent, la police, le parquet), qu’une enquête soit menée et qu’une condamnation soit prononcée.
+            Sachant qu’en matière pénale, un appel est suspensif, et que des pourvois en cassation sont possibles, une éventuelle décision définitive sur ce dossier pourrait bien ne pas intervenir avant plusieurs années.
+            Uber estime qu’UberPop n’est pas concerné par la loi...
+
+        </p>
+        <small>Source: <cite><a target="_blank" href="http://www.lemonde.fr/economie/article/2014/12/16/pourquoi-uberpop-va-continuer-sur-sa-lancee-apres-le-1er-janvier_4541064_3234.html">Le monde</a></cite></small>
+    </blockquote>
+    </small>
+    </article>
+</div>
+{% endblock %}

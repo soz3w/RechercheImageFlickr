@@ -1,0 +1,11 @@
+wa_flickr:
+    resource: "@WAFlickrBundle/Resources/config/routing.yml"
+    prefix:   /
+
+wa_blog:
+    resource: "@WABlogBundle/Resources/config/routing.yml"
+    prefix:   /blog/
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation

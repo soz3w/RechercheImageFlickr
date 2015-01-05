@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <link rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+    <title></title>
+    <style type="text/css">
+        li{
+            list-style-type: none;
+            form{
+                width:60%;
+                padding: 10%;
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="container">
+    <h1>Contact us</h1>
+</header>
+<div class="main container jumbotron">
+
+     {% for message in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% for message in app.session.flashbag.get('error') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {{ form_start(myFormContact,{attr:{'class':'maclass'}}) }}
+        <fieldset>
+            <legend>Contact form</legend>
+            <ul>
+                <li>{{ form_label(myFormContact.firstname,'Prenom :') }}
+                    {{ form_widget(myFormContact.firstname) }}
+                </li>
+                <li>{{ form_label(myFormContact.lastname,'Nom :') }}
+                    {{ form_widget(myFormContact.lastname) }}
+                </li>
+                <li>{{ form_label(myFormContact.email,'Email :') }}
+                    {{ form_widget(myFormContact.email) }}
+                </li>
+                <li>{{ form_label(myFormContact.message,'Message :') }}
+                    {{ form_widget(myFormContact.message) }}
+                </li>
+                <li>{{ form_widget(myFormContact.send,{'label':'Envoyer le message'}) }}</li>
+            </ul>
+
+        </fieldset>
+
+
+    {{ form_end(myFormContact) }}
+
+{#form(myFormContact)#}
+</div>
+<footer>
+    {#comment with twig#}
+</footer>
+<script src="/vendor/js/jquery-2.1.1.min.js"></script>
+<script src="/vendor/js/bootstrap.min.js"></script>
+</body>

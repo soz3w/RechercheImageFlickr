@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <link rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+    <title>{% block title %} Mon Blog de ouf avec symfony {% endblock %}</title>
+    <link rel="stylesheet" href="{{asset('bundles/wablog/css/style.css')}}"/>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<header>
+    <h1></h1>
+</header>
+<div class="main container jumbotron">
+    {% block content %}Article{% endblock %}
+
+
+</div>
+{% set idnext =id+1 %}
+{% if id!=1 %}
+    {% set idprevious =id-1 %}
+{% else %}
+    {% set idprevious =1 %}
+{% endif %}
+<ul class="pagination">
+    <li><a href="{{ path('wa_blog_article',{'id':idprevious}) }}"><= </a> </li>
+    <li><a href="{{ path('wa_blog_article',{'id':idnext}) }}">=></a></li>
+</ul>
+<footer>
+    {#comment with twig#}
+</footer>
+<script src="/vendor/js/jquery-2.1.1.min.js"></script>
+<script src="/vendor/js/bootstrap.min.js"></script>
+</body>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <link rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+    <title></title>
+    <style type="text/css">
+        ul{
+            width:80%;
+        }
+        li{
+            list-style-type: none;
+            display:inline-block;
+
+        }
+        img{
+            background: black;
+        }
+    </style>
+</head>
+<body>
+<header class="container">
+    <h1>get images from flickr</h1>
+</header>
+<div class="main container jumbotron">
+
+     {% for message in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% for message in app.session.flashbag.get('error') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {{ form_start(mySearchForm,{attr:{'class':'form-inline','role':'form'}}) }}
+
+            <ul>
+                <li>{{ form_label(mySearchForm.tags,'Tags :') }}
+                    {{ form_widget(mySearchForm.tags) }}
+                </li>
+                <li>{{ form_label(mySearchForm.maximum,'Maximum :') }}
+                    {{ form_widget(mySearchForm.maximum) }}
+                </li>
+
+                <li>{{ form_widget(mySearchForm.send,{'label':'find Out in flickr'}) }}</li>
+            </ul>
+
+
+
+
+    {{ form_end(mySearchForm) }}
+
+{#form(mySearchForm)#}
+    <div class="row">
+        <div class="col-sm-10">
+            {% if photos is defined %}
+                {% if photos is empty %}
+                    <p>no photos found</p>
+                {% else %}
+                    <p>result of search</p>
+                    <ul>
+                        <li>
+                            {% for photo in photos %}
+                                <a class="thumbnail" href="{{ path('wa_flickr_search_imageDesc',
+                                {'id':photo.id,'secret':photo.secret,"url":photo.url,"title":photo.title}) }}">
+                                    <img class="img-rounded" src="{{ photo.url }}"
+                                         alt="{{ photo.title }}" title="{{ photo.title }}"/>
+                                </a>
+                                <a class="btn btn-default" href="{{ path('wa_flickr_search_addToFavorite',
+                                    {'id':photo.id,'secret':photo.secret})}}">add to favorite
+                                </a>
+                            {% endfor %}
+                        </li>
+                    </ul>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="col-sm-2">
+            <p><span class="label label-warning">My favorite photos</span></p>
+            {% set photosFav = app.session.get('photos') %}
+
+                {% for photoFav in photosFav %}
+                    <div class="flash-notice">
+                        <a class="thumbnail" href="{{ path('wa_flickr_search_imageDesc',
+                        {'id':photoFav.id,'secret':photoFav.secret,"url":photoFav.url,"title":photoFav.title}) }}">
+                            <img class="img-circle" src="{{ photoFav.url }}" />
+                        </a>
+                    </div>
+                {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+<footer>
+    {#comment with twig#}
+</footer>
+<script src="/vendor/js/jquery-2.1.1.min.js"></script>
+<script src="/vendor/js/bootstrap.min.js"></script>
+</body>

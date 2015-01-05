@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <link rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+    <title></title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<header>
+    <h1></h1>
+</header>
+<div class="main container jumbotron">
+    <h1>Hello {{ name|capitalize }} </h1>
+    <h2>your age is {{ age }}</h2>
+    <h3><a href="{{ url }}">Say hello to bryan</a> </h3>
+    <h3><a href="{{ path('wa_flickr_helloword',{'name':'Chidan','age':64}) }}">Say hello to chidan</a></h3>
+
+
+    {% set items = ['a', 'b', 'c', 'd', 'e', 'f', 'g'] %}
+
+    <table class="row col-md-7 table table-responsive table-striped table-bordered">
+        {% for row in items|batch(3, 'No item') %}
+            <tr>
+                {% set i=1 %}
+                {% for column in row %}
+
+                    {% if i==1 %}
+                        {% set i=0 %}
+                        <td class="info col-md-2"><span class="text-justify badge label label-info">{{ column|upper }}</span></td>
+                    {% else %}
+                        <td class="success col-md-2"><span class="text-justify label label-success">{{ column|upper }}</span></td>
+                        {% set i=1 %}
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {#else du for if no items also loop.first, .next, .last#}
+        {% else %}
+
+        {% endfor %}
+
+        {% for i in 0..10 %}
+        {% endfor %}
+
+        {# 4 for step#}
+        {% for i in range(0,40,4) %}
+        {% endfor %}
+    </table>
+
+</div>
+<footer>
+    {#comment with twig#}
+</footer>
+<script src="/vendor/js/jquery-2.1.1.min.js"></script>
+<script src="/vendor/js/bootstrap.min.js"></script>
+</body>
