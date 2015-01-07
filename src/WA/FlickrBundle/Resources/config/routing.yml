@@ -1,6 +1,3 @@
-wa_flickr_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: WAFlickrBundle:Default:index }
 #mon hello world à moi:
 wa_flickr_helloword:
     path:     /hello-world/{name}/{age}

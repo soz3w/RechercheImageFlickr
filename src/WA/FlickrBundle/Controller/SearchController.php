@@ -23,7 +23,7 @@ class SearchController extends Controller
         $formBuilder=$this->createFormBuilder();
         $formBuilder->add('tags','text');
         $formBuilder->add('maximum','choice',['choices'=>[10=>10,20=>20,30=>30]]);
-        $formBuilder->add('taille','choice',['choices'=>['b'=>'big','z'=>'mid','m'=>'small']]);
+        $formBuilder->add('size','choice',['choices'=>['b'=>'big','z'=>'mid','m'=>'small']]);
         $formBuilder->add('send','submit');
 
         return $formBuilder->getForm();
